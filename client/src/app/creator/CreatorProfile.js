@@ -64,16 +64,16 @@ const CreatorProfile = () => {
   return (
     <>
       {Object.keys(offerring).length !== 0 ? (
-        <div className="flex flex-row max-sm:flex-wrap max-md:flex-wrap h-screen">
+        <div className="flex flex-row max-sm:flex-wrap max-md:flex-wrap h-screen justify-center">
           <section className="">
-            <div className="bg-[#93C6FB] relative w-[26.5rem] sm:w-full md:w-full flex flex-col bg-clip-border text-gray-700 shadow-md">
-              <div className="mx-4 mt-6 h-40 overflow-hidden rounded-full bg-clip-border text-white">
+            <div className="bg-[#93C6FB] relative flex flex-col bg-clip-border text-gray-700 shadow-md">
+              <div className="px-12 mt-6 overflow-hidden rounded-full bg-clip-border text-white">
                 <img
                   className="h-40 w-40 object-cover rounded-full "
                   src={offerring.creatorDetails.profilePic}
                 />
               </div>
-              <div className="p-6 ">
+              <div className="px-14 py-5">
                 <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                   {offerring.creatorDetails.name}
                 </h5>
@@ -162,8 +162,8 @@ const CreatorProfile = () => {
             </div>
           </section>
 
-          <section className="  bg-[#F0ECE2] w-[26.5rem] sm:w-full md:w-full overflow-auto">
-            <div className="flex items-center gap-3 px-5 py-5 ">
+          <section className="bg-[#F0ECE2]  overflow-auto border-2 border-black">
+            <div className="flex items-center gap-3 px-5 py-5  max-sm:flex-wrap">
               <button
                 onClick={() => navigate("/")}
                 className=" px-3 text-xl bg-black my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#009b49] before:to-[rgb(105,184,141)] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]"
