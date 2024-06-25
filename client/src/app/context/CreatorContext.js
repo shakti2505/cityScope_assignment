@@ -123,10 +123,12 @@ export const CreatorContextProvider = ({ children }) => {
           }
         );
         if (apicall.status === 200) {
-          setTimeout(() => {
-            setIsOfferingLoading(false);
-            setOffering(apicall.data);
-          }, 2000);
+          // setTimeout(() => {
+          
+          // }, 2000);
+          setOffering(apicall.data);
+          setIsOfferingLoading(false);
+
          
         }
       } catch (error) {
