@@ -7,7 +7,7 @@ if(
 ){
     BASE_URL_API = "http://localhost:4800";
 }else{
-    BASE_URL_API="https://scholerhub.onrender.com/"
+    BASE_URL_API="https://scholerhub.onrender.com"
 }
   
 export default BASE_URL_API
