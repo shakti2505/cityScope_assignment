@@ -22,7 +22,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:3000",
-  // "https://socialbook-x3jq.onrender.com",
+  "https://scholerhub.onrender.com/",
 ];
 
 
