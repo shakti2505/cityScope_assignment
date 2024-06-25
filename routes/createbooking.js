@@ -28,7 +28,6 @@ router.post("/createbooking", authorization, async (req, res) => {
       });
   
       const savedBooking = await newBooking.save();
-      console.log(savedBooking)
       if (savedBooking) {
         const course = await offeringModal.findById(courseId);
         

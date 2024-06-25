@@ -41,10 +41,8 @@ export const AuthContextProvider = ({ children }) => {
           localStorage.setItem("User", JSON.stringify(response.data.user));
           setRegisterInfo(null);
           setRegisteredUser(response.data.user);
-          setTimeout(() => {
-            setIsRegisterLoading(true);
-            navigate("/login");
-          }, 2000);
+          setIsRegisterLoading(true);
+          navigate("/login");
         } else if (response.status === 500) {
           // Server error
           setRegisterError("Server error. Please try again later.");
