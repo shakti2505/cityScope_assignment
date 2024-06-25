@@ -38,7 +38,6 @@ export const AuthContextProvider = ({ children }) => {
 
         if (response.status === 201) {
           // User registered successfully
-          localStorage.setItem("User", JSON.stringify(response.data.user));
           setRegisterInfo(null);
           setRegisteredUser(response.data.user);
           setIsRegisterLoading(true);
