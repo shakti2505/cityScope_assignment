@@ -35,10 +35,18 @@ export const CreatorContextProvider = ({ children }) => {
   }, []);
 
   const createBooking = useCallback(
-    async (email,guest, slotDate, slotTime, courseId, creatorId, courseDetails) => {
+    async (
+      email,
+      guest,
+      slotDate,
+      slotTime,
+      courseId,
+      creatorId,
+      courseDetails
+    ) => {
       try {
         let body = {
-          email:email,
+          email: email,
           guest: guest,
           slotDate: slotDate,
           slotTime: slotTime,
@@ -101,7 +109,6 @@ export const CreatorContextProvider = ({ children }) => {
           setIsCreatorByIdLoading(false);
           setCreatorById(apicall.data);
           navigate(`creator/${name}`);
-
         }
       } catch (error) {
         setIsCreatorByIdLoading(false);
@@ -123,13 +130,9 @@ export const CreatorContextProvider = ({ children }) => {
           }
         );
         if (apicall.status === 200) {
-          // setTimeout(() => {
-          
-          // }, 2000);
+          navigate(`creator/${id}`);
           setOffering(apicall.data);
           setIsOfferingLoading(false);
-
-         
         }
       } catch (error) {
         setIsOfferingLoading(false);
@@ -141,21 +144,20 @@ export const CreatorContextProvider = ({ children }) => {
   );
 
   const getOfferingById = useCallback(
-    async (id) => {
+    async (id, courseId) => {
       try {
+        console.log(courseId, 'course id in func')
         setIsofferingByIdLoading(true);
         const apicall = await axios.get(
-          BASE_URL_API + apiVariables.getOfferingById(id).url,
+          BASE_URL_API + apiVariables.getOfferingById(courseId).url,
           {
             withCredentials: true,
           }
         );
         if (apicall.status === 200) {
-          setTimeout(() => {
+          navigate(`/${id}/${courseId}`);
             setOfferingById(apicall.data);
-            setIsofferingByIdLoading(false);
-          }, 2000);
-       
+            setIsofferingByIdLoading(false)
         }
       } catch (error) {
         setIsofferingByIdLoading(false);
@@ -237,7 +239,7 @@ export const CreatorContextProvider = ({ children }) => {
         IsBookingCreationLoading,
         ErrorInBookingCreation,
         allCreatorForHome,
-        updateOffering
+        updateOffering,
       }}
     >
       {children}

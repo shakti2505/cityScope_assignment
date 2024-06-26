@@ -68,8 +68,8 @@ const Home = () => {
                           onClick={() => {
                             if (user) {
                               // navigate(`creator/${item._id}`);
-                              getCraetorById(item._id, item.name);
-                              getOfferingByCreatorId(item._id)
+                              // getCraetorById(item._id, item.name);
+                              getOfferingByCreatorId(item._id);
                             } else {
                               alert("Please login to see profile");
                             }

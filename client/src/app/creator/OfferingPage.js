@@ -6,7 +6,7 @@ import Loader from "../../utilities/loaders/Loader";
 import Loader2 from "../../utilities/loaders/Loader2";
 
 const OfferingPage = () => {
-  const { courseId, id } = useParams();
+  const { courseId, id} = useParams();
   const user = JSON.parse(localStorage.getItem("User"));
   const navigate = useNavigate();
   const {
@@ -16,6 +16,7 @@ const OfferingPage = () => {
     getCraetorById,
     getOfferingByCreatorId,
     createBooking,
+    getOfferingById,
     booking,
     IsBookingCreationLoading,
     ErrorInBookingCreation,
@@ -49,9 +50,13 @@ const OfferingPage = () => {
     },
   ];
 
+  useEffect(()=>{
+    getOfferingById(id, courseId);
+  },[courseId])
+
   return (
     <>
-      {isofferingByIdLoading ? (
+      {offeringById.length==0 ? (
         <div className="flex items-center justify-center h-screen">
           <Loader2 />
         </div>

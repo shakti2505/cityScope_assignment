@@ -6,6 +6,7 @@ import Loader2 from "../../utilities/loaders/Loader2";
 const CreatorProfile = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  // alert(id);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showSortedOfferign, setShowSortedOffering] = useState(false);
   const [sortedOffering, setsortedOffering] = useState([]);
@@ -22,6 +23,7 @@ const CreatorProfile = () => {
     offerring,
     isOfferingLoading,
   } = useContext(CreatorContext);
+
   const handleNextClick = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % allCreator.length);
   };
@@ -32,7 +34,6 @@ const CreatorProfile = () => {
     );
   };
 
-
   const sortOffering = (criteria) => {
     setShowSortedOffering(true);
     if (criteria === "oldest") {
@@ -42,8 +43,6 @@ const CreatorProfile = () => {
             (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
           )[0]
       );
-
-      console.log(sortedOffering, "sorted offering by old");
     } else if (criteria === "newest") {
       setsortedOffering(
         offerring &&
@@ -51,15 +50,16 @@ const CreatorProfile = () => {
             (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
           )[0]
       );
-      console.log(sortedOffering, "sorted offering new");
     } else if (criteria === "top-rated") {
       setsortedOffering(
         offerring && offerring.offering.sort((a, b) => b.ratings - a.ratings)[0]
       );
-
-      console.log(sortedOffering, "sorted offering top rated");
     }
   };
+
+  useEffect(() => {
+    getOfferingByCreatorId(id);
+  }, [id]);
 
   return (
     <>
@@ -257,8 +257,8 @@ const CreatorProfile = () => {
 
                           <button
                             onClick={() => {
-                              navigate(`/${id}/${item._id}`);
-                              getOfferingById(item._id);
+                              // navigate(`/${id}/${item._id}`);
+                              getOfferingById(id, item._id);
                             }}
                             className="inline-flex items-center px-4 py-2 bg-transparent rounded-full ring-1 border-black   text-black text-sm font-medium active:bg-slate-400"
                           >
@@ -337,7 +337,6 @@ const CreatorProfile = () => {
                         <span className="text-xs">Video meeting </span>
                       </div>
                     </div>
-
                     <button
                       onClick={() => {
                         navigate(`/${id}/${sortedOffering._id}`);
